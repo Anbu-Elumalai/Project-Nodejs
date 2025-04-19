@@ -1,12 +1,53 @@
 {
-  "name": "project-nodejs",
+  "name": "node-scratch",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts",
+    "build": "tsc",
+    "apidoc": "apidoc -i routes/ -o apidoc/",
+    "migrate:dev": "cross-env MIGRATE_MODE=development node scripts/migration.js",
+    "create-migration": "node scripts/migration.js",
+    "apply-migration": "node scripts/applymigration.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.688.0",
+    "@types/express": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.8.2",
+    "nodemailer": "^6.9.16",
+    "nodemon": "^3.1.7",
+    "reflect-metadata": "^0.2.2",
+    "routing-controllers": "^0.10.4",
+    "ts-migrate-mongoose": "^3.8.5",
+    "ts-node": "^10.9.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.14.0",
+    "@types/cors": "^2.8.17",
+    "@types/ejs": "^3.1.5",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.9.0",
+    "@types/nodemailer": "^6.4.16",
+    "apidoc": "^1.2.0",
+    "glob": "^9.0.0",
+    "globals": "^15.12.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.14.0"
+  },
+  "engines": {
+    "node": "20.x"
+  }
 }
